@@ -102,6 +102,7 @@ func MessagingBootstrapHandler(ctx context.Context, wg *sync.WaitGroup, startupT
 		return false
 	}
 
+	lc.Errorf("configuration.ExternalMQTT.Enabled: %v", configuration.ExternalMQTT.Enabled)
 	if configuration.ExternalMQTT.Enabled {
 		if !handlers.NewExternalMQTT(messaging.OnConnectHandler(requestTimeout, dic)).BootstrapHandler(ctx, wg, startupTimer, dic) {
 			return false

@@ -200,6 +200,10 @@ func commandRequestHandler(requestTimeout time.Duration, dic *di.Container) mqtt
 	}
 }
 
+// commandMetadataHandler从外部消息代理接收处理元数据请求
+// Topic格式为：<edge-box-name>/edgex/metadata/request/<object-name>/<method>
+// object-name包含两种类型：device和profile，根据不同类型处理不同的元数据
+// method包含：add/update/del，根据不同的method进行元数据的不同操作
 func commandMetadataHandler(requestTimeout time.Duration, dic *di.Container) mqtt.MessageHandler {
 	return func(client mqtt.Client, message mqtt.Message) {
 		lc := bootstrapContainer.LoggingClientFrom(dic.Get)

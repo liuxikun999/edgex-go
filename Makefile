@@ -97,7 +97,7 @@ cmd/core-data/core-data:
 
 command: cmd/core-command/core-command
 cmd/core-command/core-command:
-	$(GO) build -tags "$(ADD_BUILD_TAGS) $(NON_DELAYED_START_GO_BUILD_TAG_FOR_CORE)" $(GOFLAGS) -o $@ ./cmd/core-command
+	CGO_ENABLED=0 GOOS=linux GOARCH=arm $(GO) build -tags "$(ADD_BUILD_TAGS) $(NON_DELAYED_START_GO_BUILD_TAG_FOR_CORE)" $(GOFLAGS) -o $@ ./cmd/core-command
 
 common-config: cmd/core-common-config-bootstrapper/core-common-config-bootstrapper
 cmd/core-common-config-bootstrapper/core-common-config-bootstrapper:
