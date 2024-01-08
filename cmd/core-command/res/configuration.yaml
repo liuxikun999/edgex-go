@@ -27,6 +27,7 @@ Clients:
 ExternalMQTT:
   Enabled: true
   Url: "tcp://192.168.104.90:6883"
+  # ex-core-command-{DeviceName}
   ClientId: ex-core-command
   ConnectTimeout: 5s
   AutoReconnect: true
